@@ -5,18 +5,16 @@ listaKeys = tuplaKeys.crearListaDeTuplasKey()
 def crearTablero(listaKeys):
     diccionario={}
     for i in range(1,26):
-        diccionario[i]=""
+        diccionario[i]="x"
     return diccionario
 
 dic = crearTablero(listaKeys)
-
+print(dic)
+corte=5
 for i in dic:
-    print(dic[i]+"",end="")
-    if i!=5:
-        print(dic[i]+"",end="")
-    else:
+    if i==corte or i==corte*2 or i==corte*3 or i==corte*4:
         print(dic[i])
-
-#print (dic)
+    else:
+        print(dic[i]+"",end="")
 
 

@@ -1,19 +1,22 @@
-def crearMatriz():
-    columnas, filas = 5, 5;
-    Matrix=[["" for x in range(columnas)] for y in range(filas)] 
-    #podria haber puesto: Matriz =[["","","","",""]  [][][][]  ]
-    #solo complete la fila 1, cada columna en vacio
-    return Matrix
+class Matriz:
+    filas=5
+    columnas=5
 
-def mostrarMatrizCompleta(matriz):
-    print (matriz)
+    def crearMatriz(self):
+        Matrix=[["" for x in range(self.columnas)] for y in range(self.filas)] 
+        #podria haber puesto: Matriz =[["","","","",""]  [][][][]  ]
+        #solo complete la fila 1, cada columna en vacio
+        return Matrix
 
-def mostrarCeldaMatriz(matriz,fila,columna):
-    print (matriz[fila][columna])
+    def mostrarMatrizCompleta(self):
+        print (self)
 
-def modificarCelda(matriz,fila,columna):
-    matriz[fila][columna]="X"
-    return matriz
+    def mostrarCeldaMatriz(self,fila,columna):
+        print (self[fila][columna])
+
+    def modificarCelda(self,fila,columna):
+        self[fila][columna]="X"
+        return matriz
 
 ma = crearMatriz()
 

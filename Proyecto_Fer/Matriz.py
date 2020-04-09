@@ -1,27 +1,35 @@
-class Matriz:
-    filas=5
-    columnas=5
+class Malla():
 
-    def crearMatriz(self):
-        Matrix=[["" for x in range(self.columnas)] for y in range(self.filas)] 
+    def __init__(self):
+        self.__filas=5
+        self.__columnas=5
+        self.__celulaMuerta=""
+        self.__celulaViva="X"
+
+    def cargarMalla(self):
+        self=[[self.__celulaViva for x in range(self.__columnas)] for y in range(self.__filas)] 
         #podria haber puesto: Matriz =[["","","","",""]  [][][][]  ]
         #solo complete la fila 1, cada columna en vacio
-        return Matrix
+        #return Matrix
 
-    def mostrarMatrizCompleta(self):
-        print (self)
+    def mostrarMallaCompleta(self):
+        print(self)
 
-    def mostrarCeldaMatriz(self,fila,columna):
-        print (self[fila][columna])
+    def mostrarCelula(self,fila,columna):
+        print(self[fila][columna])
 
-    def modificarCelda(self,fila,columna):
-        self[fila][columna]="X"
-        return matriz
-
+    def celulaViva(self,fila,columna):
+        self[fila][columna]=self.__celulaViva
+"""
 ma = crearMatriz()
 
 mostrarMatrizCompleta(ma)
 
 modificarCelda(ma,0,4)
 
-mostrarMatrizCompleta(ma)
+mostrarMatrizCompleta(ma) """
+m = Malla()
+m.cargarMalla()
+m.mostrarMallaCompleta()
+
+<__main__.Malla object at 0x7efd085889b0>

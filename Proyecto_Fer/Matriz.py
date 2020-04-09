@@ -5,21 +5,22 @@ class Malla():
         self.__columnas=5
         self.__celulaMuerta=""
         self.__celulaViva="X"
+        self.__matriz=self.cargarMatriz()
 
-    def cargarMalla(self):
-        self=[[self.__celulaViva for x in range(self.__columnas)] for y in range(self.__filas)] 
+    def cargarMatriz(self):
+        self.__matriz=[[self.__celulaViva for x in range(self.__columnas)] for y in range(self.__filas)] 
         #podria haber puesto: Matriz =[["","","","",""]  [][][][]  ]
         #solo complete la fila 1, cada columna en vacio
         #return Matrix
 
     def mostrarMallaCompleta(self):
-        print(self)
+        print(self.__matriz)
 
     def mostrarCelula(self,fila,columna):
-        print(self[fila][columna])
+        print(self.__matriz[fila][columna])
 
     def celulaViva(self,fila,columna):
-        self[fila][columna]=self.__celulaViva
+        self.__matriz[fila][columna]=self.__celulaViva
 """
 ma = crearMatriz()
 
@@ -29,7 +30,5 @@ modificarCelda(ma,0,4)
 
 mostrarMatrizCompleta(ma) """
 m = Malla()
-m.cargarMalla()
-m.mostrarMallaCompleta()
 
-<__main__.Malla object at 0x7efd085889b0>
+m.mostrarMallaCompleta()

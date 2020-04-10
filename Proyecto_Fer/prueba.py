@@ -1,5 +1,9 @@
 
 import random
+import Malla
+m = Malla.Malla(2,2)
+m.mostrarMallaCompleta()
+
 matriz=[[0,0,0],[0,0,0],[0,0,0]]
 #print(matriz)
 #ciclo de oprotunidades

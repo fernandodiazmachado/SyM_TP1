@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from curses import wrapper
 
 def main(stdscr):

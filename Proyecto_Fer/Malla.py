@@ -23,6 +23,8 @@ class Malla():
 """
 m = Malla(3,3)
 m.mostrarMallaCompleta()
+
+
 m.celulaMuerta(3,2)
 m.mostrarMallaCompleta()
 

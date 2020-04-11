@@ -1,10 +1,12 @@
+import Malla
+
 def SumarAdyacentes(matriz, fila, columna):
     totalVecinos = 0
 
-    for fil in range(fila-1, fila+2, 1):
-        for col in range(columna-1, columna+2, 1):
+    for fil in range(fila-1, fila+2, 1):#Recorro desde la fila anterior, hasta la siguiente.
+        for col in range(columna-1, columna+2, 1):#Recorro desde la columna anterior hasta la siguiente
             if( fil == fila and col == columna):
-                continue
+                continue #-->Continuo con la siguiente iteración
             if fil == len(matriz) or col == len(matriz[fil]):
                 break
             if fil >= 0 and col >= 0 and matriz[fil][col] == "X":
@@ -12,27 +14,17 @@ def SumarAdyacentes(matriz, fila, columna):
 
     return totalVecinos
 
-def NuevaMatriz(matrizOriginal, iteraciones):
-    if iteraciones == 0:
-        print("Final")
-        return
-    
-    matriz = [None] * len(matrizOriginal)
-    for i in range(len(matrizOriginal)):
-        matriz[i] = [None] * len(matrizOriginal[i])
-
+def NuevaMatriz(matrizOriginal):
+ 
+    matriz = Malla.Malla(5,5)
+    #Creo matriz vacia
     for fil in range(len(matrizOriginal)):
         for col in range(len(matrizOriginal[fil])):
             cantidad = SumarAdyacentes(matrizOriginal, fil, col)
-            if cantidad <= 2:
-                matriz[fil][col] = ""
-            else:
-                matriz[fil][col] = "X"
+            if cantidad < 2 or cantidad >3:
+                matriz.celulaMuerta(fil+1,col+1) #= ""
+            elif cantidad ==2 or cantidad==3:
+                matriz.celulaViva(fil+1,col+1) #= "X"
 
-    print (matriz)
-    NuevaMatriz(matriz, iteraciones-1)
-        
-matrizPrueba = [["X", "", ""], ["X","X", ""], ["X","", ""],["X","", ""]]
-print(len(matrizPrueba))
-print(matrizPrueba)
-NuevaMatriz(matrizPrueba,2)
+    return matriz.mallaCompleta()
+

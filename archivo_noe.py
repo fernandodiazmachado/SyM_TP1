@@ -32,6 +32,7 @@ def NuevaMatriz(matrizOriginal, iteraciones):
     print (matriz)
     NuevaMatriz(matriz, iteraciones-1)
         
-matrizPrueba = [["X", "", ""], ["X","X", ""], ["X","", ""]]
+matrizPrueba = [["X", "", ""], ["X","X", ""], ["X","", ""],["X","", ""]]
+print(len(matrizPrueba))
 print(matrizPrueba)
 NuevaMatriz(matrizPrueba,2)

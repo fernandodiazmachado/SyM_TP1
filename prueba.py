@@ -1,5 +1,6 @@
-https://pypi.python.org/pypi/UniCurses
-sudo apt-get install libncurses5-dev libncursesw5-dev
+#Si no reconoce curses como libreria, correr el siguiente comando por consola:
+#sudo apt-get install libncurses5-dev libncursesw5-dev
+import curses
 FILAS = 5 
 COLUMNAS = 5
 CELULA_MUERTA = "-"
@@ -16,9 +17,9 @@ def InicializarMatriz():
         matrizInicial.append([CELULA_MUERTA] * COLUMNAS)
 
     #Asigno celula viva
-    AsignarValorCelula(0, 2, CELULA_VIVA)
-    AsignarValorCelula(2, 3, CELULA_VIVA)
-    AsignarValorCelula(4, 4, CELULA_VIVA)
+    AsignarValorCelula(1, 1, CELULA_VIVA)
+    AsignarValorCelula(1, 3, CELULA_VIVA)
+    AsignarValorCelula(2, 2, CELULA_VIVA)
 
 def NuevaMatriz(matrizOriginal):
 
@@ -51,7 +52,7 @@ def SumarAdyacentes(matriz, fila, columna):
     return totalVecinos
 
 def main():
-    screen = curses.initscr()
+    screen = curses.initscr() #inicializo el objeto ventana
     fila = 0
     #matrizPrueba = [["X", "-", "-"], ["X","X", "-"], ["X","-", "-"]]
     InicializarMatriz()
@@ -65,12 +66,12 @@ def main():
             texto = texto + matrizInicial[fil][col]
             screen.addstr(fila+fil,0, texto)
 
-    curses.napms(1000)
-    fila = fila + FILAS + 1
+    curses.napms(1000) #paro la ejecucion (milisegundos)
+    fila = fila + FILAS + 1 
     screen.addstr(fila,0, "Presione b para inicializar el programa: ")
     caracter = screen.getch()
 
-    matriz = NuevaMatriz(matrizInicial)
+    matriz = NuevaMatriz(matrizInicial) #'matriz' es la siguiente matriz a mostrar con las nuevas celulas vivas o muertas
 
     if chr(caracter) == 'b':
         screen.clear()
@@ -80,7 +81,7 @@ def main():
                 texto = ""
                 for col in range(len(matriz[fil])):
                     texto = texto + matriz[fil][col]
-                screen.addstr(fila+fil, 0, texto)
+                    screen.addstr(fila+fil, 0, texto)
 
             curses.napms(1000)
             fila = fila + FILAS + 1

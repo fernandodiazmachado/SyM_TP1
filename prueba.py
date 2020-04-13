@@ -1,4 +1,5 @@
-FILAS = 5
+https://pypi.python.org/pypi/UniCurses
+FILAS = 5 
 COLUMNAS = 5
 CELULA_MUERTA = "-"
 CELULA_VIVA = "X"

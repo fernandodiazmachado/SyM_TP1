@@ -1,4 +1,5 @@
 https://pypi.python.org/pypi/UniCurses
+sudo apt-get install libncurses5-dev libncursesw5-dev
 FILAS = 5 
 COLUMNAS = 5
 CELULA_MUERTA = "-"

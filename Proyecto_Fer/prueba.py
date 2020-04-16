@@ -1,5 +1,7 @@
-https://pypi.python.org/pypi/UniCurses
-sudo apt-get install libncurses5-dev libncursesw5-dev
+#https://pypi.python.org/pypi/UniCurses
+#sudo apt-get install libncurses5-dev libncursesw5-dev
+from io import *
+
 FILAS = 5 
 COLUMNAS = 5
 CELULA_MUERTA = "-"

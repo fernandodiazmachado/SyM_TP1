@@ -1,32 +1,32 @@
 #Si no reconoce curses como libreria, correr el siguiente comando por consola:
 #sudo apt-get install libncurses5-dev libncursesw5-dev
 import curses
+from manejadorArchivo import listaCelulasVivas
+
+
+CELULASVIVAS=listaCelulasVivas()
+#Creo una lista con las celulas vivas.(traigo la informacion del archivo: CelulasVivas.txt)
+#La lógica para traer la informacion del archivo está en el módulo 'manejadorArchivo.py'
 FILAS = 5 
 COLUMNAS = 5
 CELULA_MUERTA = "-"
 CELULA_VIVA = "X"
 matrizInicial = []
 
-def AsignarValorCelula(fila, columna, valor):
-    matrizInicial[fila][columna] = valor
-
+def AsignarValorCelula(celula):
+    matrizInicial[int(celula[0])][int(celula[2])] = CELULA_VIVA
+    
 def InicializarMatriz():
+    
     #Inicializo todas las celdas como muertas
     #matrizInicial = [[CELULA_MUERTA for x in range(COLUMNAS)] for yin range(FILAS):
     for i in range(FILAS):
         matrizInicial.append([CELULA_MUERTA] * COLUMNAS)
-
-    #Asigno celula viva, #la primera fila es 0
-    AsignarValorCelula(0, 0, CELULA_VIVA)
-    AsignarValorCelula(1, 1, CELULA_VIVA)
-    AsignarValorCelula(1, 3, CELULA_VIVA)
-    AsignarValorCelula(2, 0, CELULA_VIVA)
-    AsignarValorCelula(2, 2, CELULA_VIVA)
-    AsignarValorCelula(3, 1, CELULA_VIVA)
-    AsignarValorCelula(3, 3, CELULA_VIVA)
-    AsignarValorCelula(4, 0, CELULA_VIVA)
-
-def NuevaMatriz(matrizOriginal):
+    
+    for i in range(len(CELULASVIVAS)):
+        AsignarValorCelula(CELULASVIVAS[i])
+    
+ def NuevaMatriz(matrizOriginal):
 
     matriz = [None] * len(matrizOriginal)
     for i in range(len(matrizOriginal)):

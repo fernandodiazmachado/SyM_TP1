@@ -5,7 +5,7 @@ from manejadorArchivo import LeerArchivo
 
 FILAS = 25 
 COLUMNAS = 25
-CELULA_MUERTA = "-"
+CELULA_MUERTA = " "
 CELULA_VIVA = "X"
 matrizInicial = []
 
@@ -18,7 +18,7 @@ def InicializarMatriz():
         matrizInicial.append([CELULA_MUERTA] * COLUMNAS)
 
     #Creo una lista con las celulas vivas.(traigo la informacion del archivo: CelulasVivas.txt)   
-    matrizCelulasVivas = LeerArchivo("CelulasVivas.txt")
+    matrizCelulasVivas = LeerArchivo("3patrones.txt")
 
     for fil in range(len(matrizCelulasVivas)):  
         AsignarValorCelula(int(matrizCelulasVivas[fil][0]), int(matrizCelulasVivas[fil][1]))

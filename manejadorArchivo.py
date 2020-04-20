@@ -1,7 +1,11 @@
 from io import *
 
-def listaCelulasVivas():
-    celulasDePrueba=open("CelulasVivas.txt","r")
-    texto = celulasDePrueba.readlines()
-    celulasDePrueba.close()
-    return texto
+def LeerArchivo(nombreArchivo):
+    matriz = []
+    archivo = open(nombreArchivo, "r")
+
+    for linea in archivo:
+        matriz.append(linea.split(","))
+    archivo.close()
+    
+    return matriz

@@ -1,32 +1,29 @@
 #Si no reconoce curses como libreria, correr el siguiente comando por consola:
 #sudo apt-get install libncurses5-dev libncursesw5-dev
 import curses
-from manejadorArchivo import listaCelulasVivas
+from manejadorArchivo import LeerArchivo
 
-
-CELULASVIVAS=listaCelulasVivas()
-#Creo una lista con las celulas vivas.(traigo la informacion del archivo: CelulasVivas.txt)
-#La lógica para traer la informacion del archivo está en el módulo 'manejadorArchivo.py'
-FILAS = 5 
-COLUMNAS = 5
+FILAS = 25 
+COLUMNAS = 25
 CELULA_MUERTA = "-"
 CELULA_VIVA = "X"
 matrizInicial = []
 
-def AsignarValorCelula(celula):
-    matrizInicial[int(celula[0])][int(celula[2])] = CELULA_VIVA
+def AsignarValorCelula(fila, columna):
+    matrizInicial[fila][columna] = CELULA_VIVA
     
 def InicializarMatriz():
-    
     #Inicializo todas las celdas como muertas
-    #matrizInicial = [[CELULA_MUERTA for x in range(COLUMNAS)] for yin range(FILAS):
     for i in range(FILAS):
         matrizInicial.append([CELULA_MUERTA] * COLUMNAS)
+
+    #Creo una lista con las celulas vivas.(traigo la informacion del archivo: CelulasVivas.txt)   
+    matrizCelulasVivas = LeerArchivo("CelulasVivas.txt")
+
+    for fil in range(len(matrizCelulasVivas)):  
+        AsignarValorCelula(int(matrizCelulasVivas[fil][0]), int(matrizCelulasVivas[fil][1]))
     
-    for i in range(len(CELULASVIVAS)):
-        AsignarValorCelula(CELULASVIVAS[i])
-    
- def NuevaMatriz(matrizOriginal):
+def NuevaMatriz(matrizOriginal):
 
     matriz = [None] * len(matrizOriginal)
     for i in range(len(matrizOriginal)):
@@ -35,9 +32,7 @@ def InicializarMatriz():
     for fil in range(len(matrizOriginal)):
         for col in range(len(matrizOriginal[fil])):
             cantidad = SumarAdyacentes(matrizOriginal, fil, col)
-            if matrizOriginal[fil][col]==CELULA_VIVA and cantidad ==2 or cantidad==3:
-                matriz[fil][col] = CELULA_VIVA
-            elif matrizOriginal[fil][col]==CELULA_MUERTA and cantidad==3:
+            if (matrizOriginal[fil][col]==CELULA_VIVA and cantidad ==2) or cantidad==3:
                 matriz[fil][col] = CELULA_VIVA
             else:
                 matriz[fil][col] = CELULA_MUERTA
@@ -81,20 +76,16 @@ def main():
 
     if chr(caracter) == 'b':
         screen.clear()
-        fila = 0
+  
         while chr(caracter) != 'q':
             for fil in range(len(matriz)):
                 texto = ""
                 for col in range(len(matriz[fil])):
                     texto = texto + matriz[fil][col]
-                    screen.addstr(fila+fil, 0, texto)
+                    screen.addstr(fil, 0, texto)
 
             curses.napms(1000)
-            fila = fila + FILAS + 1
 
-            if fila + FILAS + 1 >= curses.LINES: 
-                screen.clear()
-                fila = 0
             matriz = NuevaMatriz(matriz)
             caracter = screen.getch()
     curses.endwin()
